@@ -3,16 +3,9 @@ import { Route, NavLink, Switch } from "react-router-dom";
 import RegisterComponent from "../register/RegisterComponent";
 import LoginComponent from "../login/LoginComponent";
 import DashboardComponent from "../dashboard/DashboardComponent";
-// import AboutComponent from "../aboutus/AboutComponent";
 import "bootstrap/dist/css/bootstrap.css";
-// import ProfileComponent from "../profile/ProfileComponent";
 import PrivateRoute from "../PrivateRoute";
-// import DetailComponent from "../DetailComponent";
-// import CartComponent from "../cart/CartComponent";
-// import UserOrderComponent from "../userorder/UserOrderComponent";
-// import MyOrderComponent from "../myorder/MyOrderComponent";
-// import OrderStatusComponent from "../orderstatus/OrderStatusComponent";
-// import NotificationComponent from "../notifications/NotificationComponent";
+ import DetailComponent from "../DetailComponent";
 class HeaderComponent extends React.Component {
   state = {
     userid: localStorage.getItem("userid")
@@ -103,9 +96,9 @@ class HeaderComponent extends React.Component {
           <Route path="/register" component={RegisterComponent} />
            <Route path="/login" component={LoginComponent} />
            <Route path="/dashboard" component={DashboardComponent} />
+           <Route path="/detailproduct/:id" exact component={DetailComponent}/>
           { /*<Route path="/about" component={AboutComponent} />
           <PrivateRoute path="/profile" component={ProfileComponent} />
-          <Route path="/detailproduct/:id" exact component={DetailComponent} />
           <Route path="/cart" component={CartComponent} />
           <Route path="/myorders" component={MyOrderComponent} />
           <Route path="/order/:id" component={UserOrderComponent} />

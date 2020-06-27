@@ -2,7 +2,7 @@ import React from "react";
 import "./register.css";
 import { Link, Redirect } from "react-router-dom";
 import { Route, NavLink, Switch } from "react-router-dom";
-//import DashboardComponent from "../dashboard/DashboardComponent";
+import DashboardComponent from "../dashboard/DashboardComponent";
 import axios from "axios";
 import SimpleReactValidator from "simple-react-validator";
 class RegisterComponent extends React.Component {

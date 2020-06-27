@@ -52,7 +52,7 @@ class DetailComponent extends React.Component {
               <Card.Img
                 variant="top"
                 src={`http://localhost:4000/uploads/${this.state.product.image}`}
-                style={{ width: "1000px", height: "400px" }}
+                style={{ width: "1105px", height: "400px" }}
               />
               <Card.Body>
                 <Card.Title name="name">{this.state.product.name}</Card.Title>

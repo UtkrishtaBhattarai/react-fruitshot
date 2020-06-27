@@ -41,12 +41,13 @@ class DashboardComponent extends React.Component {
   render() {
     const mydata = this.state.products.map(productlist => {
       return (
+        
         <Card style={{ width: "18rem", marginLeft: "3rem", marginTop: "1rem" }}>
           <NavLink to={`/detailproduct/${productlist._id}`}>
             <Card.Img
               variant="top"
               src={`http://localhost:4000/uploads/${productlist.image}`}
-              style={{ width: "200px", height: "180px" }}
+              style={{ width: "285px", height: "180px" }}
             />
           </NavLink>
           <Card.Body>
@@ -78,8 +79,8 @@ class DashboardComponent extends React.Component {
               alt="First slide"
             />
             <Carousel.Caption>
-              <h3>Spare World</h3>
-              <p>We deal with all kinds of spare parts.</p>
+              <h3>Food World</h3>
+              <p>We deal with all kinds of foods and juice.</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -91,8 +92,8 @@ class DashboardComponent extends React.Component {
             />
 
             <Carousel.Caption>
-              <h3>Bajaj</h3>
-              <p>We focus on Bajaj genuine parts</p>
+              <h3>Quality</h3>
+              <p>We focus on genuine products</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -104,12 +105,14 @@ class DashboardComponent extends React.Component {
             />
 
             <Carousel.Caption>
-              <h3>BMW</h3>
-              <p>We deal with BMW too </p>
+              <h3>Best among Best</h3>
+              <p>We deal with the best fruits and juices </p>
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
-        <div className="row">{mydata}</div>
+        <h1 className="text-center">Our Products</h1>
+        <div className="row">
+          {mydata}</div>
       </div>
     );
   }

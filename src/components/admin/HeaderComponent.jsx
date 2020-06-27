@@ -1,12 +1,8 @@
 import React from 'react'
 import { Route, NavLink, Switch } from 'react-router-dom'
-//import AdminDashboardComponent from './AdminDashboardComponent'
+import AdminDashboardComponent from './AdminDashboardComponent'
 import "bootstrap/dist/css/bootstrap.css"
-// import AddNotification from './AddNotification'
-// import ProductComponent from './ProductComponent'
-// import BajajProductComponent from './BajajproductComponent'
-// import OrderComponent from './OrderComponent'
-// import CartComponent from '../cart/CartComponent'
+import ProductComponent from './ProductComponent'
 class HeaderComponent extends React.Component {
     render() {
         return (
@@ -34,10 +30,6 @@ class HeaderComponent extends React.Component {
                             <li className="nav-item">
                                 <a className="nav-link" href="/orders">Orders</a>
                             </li>
-
-                            {/* <li className="nav-item">
-                                <a className="nav-link" href="/profile">Profile</a>
-                            </li> */}
                         </ul>
                         <form className="form-inline my-2 my-lg-0">
                             <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
@@ -46,12 +38,8 @@ class HeaderComponent extends React.Component {
                     </div>
                 </nav >
                 <Switch>
-                    {/* <Route path="/admin" component={AdminDashboardComponent} />
-                    <Route path="/addnotification" component={AddNotification} />
+                    <Route path="/admin" component={AdminDashboardComponent} />
                     <Route path="/productsadd" component={ProductComponent} />
-                    <Route path="/bajajproduct" component={BajajProductComponent} />
-                    <Route path="/orders" component={OrderComponent} /> */}
-
                 </Switch>
 
             </div>
