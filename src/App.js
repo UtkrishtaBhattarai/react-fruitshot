@@ -18,7 +18,7 @@ function App() {
   return (
     <BrowserRouter>
       <Switch>
-        <HeaderComponent></HeaderComponent>
+        {/* <HeaderComponent></HeaderComponent> */}
         <AdminLogin></AdminLogin>
         <Route>
           <NoMatch />
