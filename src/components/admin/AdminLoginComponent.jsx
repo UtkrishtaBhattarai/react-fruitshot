@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import './login.scss'
+import './adminlogin.scss'
 import SimpleReactValidator from "simple-react-validator";
 import {
     Container, Col, Form, FormGroup, Label, Input, Button, FormText
 } from 'reactstrap'
 import axios from 'axios'
 
-class LoginComponent extends Component {
+class AdminLoginComponent extends Component {
     constructor(props) {
         super(props);
     
@@ -35,6 +35,7 @@ class LoginComponent extends Component {
             .then(response => {
               console.log(response);
               localStorage.setItem("token", response.data.token);
+    
               console.log(response.data.token);
               this.setState({
                 email: "",
@@ -42,10 +43,8 @@ class LoginComponent extends Component {
                 isLoggedIn: true
               });
             })
-            .catch(err => console.log(err))
-           
-        }
-         else {
+            .catch(err => console.log(err));
+        } else {
           this.validator.showMessages();
           this.forceUpdate();
         }
@@ -53,7 +52,7 @@ class LoginComponent extends Component {
     render() {
 
         if (this.state.isLoggedIn === true) {
-            return <Redirect to='/dashboard' />
+            return <Redirect to='/admin' />
         }
         return (
             <html lang="en" >
@@ -62,8 +61,7 @@ class LoginComponent extends Component {
 <div class="container">
   <div class="left-section">
     <div class="header">
-      <h1 class="animation a1">Welcome User!</h1>
-      <h4 class="animation a2">Log in for entering your membership dashboard.</h4>
+      <h1 class="animation a1">Welcome Admin!</h1>
     </div>
     <div class="form">
       <input type="email" class="form-field animation a3" value={this.state.email} name="email"
@@ -80,8 +78,7 @@ class LoginComponent extends Component {
                       this.state.password,
                       "required"
                     )}
-      <p class="animation a5"><Link to='/adminlogin'> Admin?</Link></p>
-      <p className="text-center"><Link to='/register'> Register Here!</Link></p>
+      <p class="animation a5"><Link to='/'> User?!</Link></p>
       <button onClick={this.handleClick} class="animation a6">LOGIN</button>
     </div>
   </div>
@@ -94,4 +91,4 @@ class LoginComponent extends Component {
     }
 }
 
-export default LoginComponent;
+export default AdminLoginComponent;

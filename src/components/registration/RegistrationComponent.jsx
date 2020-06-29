@@ -2,6 +2,7 @@ import React from "react";
 import { Link, Redirect } from "react-router-dom";
 import { Route, NavLink, Switch } from "react-router-dom";
 import './register.scss'
+import Swal from 'sweetalert2';
 // import DashboardComponent from "../dashboard/DashboardComponent";
 import axios from "axios";
 import SimpleReactValidator from "simple-react-validator";
@@ -31,7 +32,7 @@ class RegisterComponent extends React.Component {
     e.preventDefault();
     if (this.validator.allValid()) {
       axios
-        .post("http://localhost:4000/register/register_user", this.state)
+        .post("http://localhost:4000/register/register", this.state)
         .then(response => {
           console.log(response.data);
           localStorage.setItem("token", response.data.token);
@@ -45,7 +46,12 @@ class RegisterComponent extends React.Component {
             password: "",
             isRegistered: true
           });
-          alert("Registered");
+          Swal.fire({
+            title: 'Success!',
+            text: 'You Have Been Registered',
+            icon: 'success',
+            confirmButtonText: 'Cool'
+          })
         })
         .catch(err => console.log(err));
     } else {
@@ -118,8 +124,11 @@ class RegisterComponent extends React.Component {
                               this.state.password,
                               "required"
                             )}
-              <button onClick={this.register} class="animation a6">LOGIN</button>
+                            
+              <button onClick={this.register} class="animation a6">REGISTER</button>
+            
             </div>
+            <p className="text-center"><Link to='/'> Login Here!</Link></p>
           </div>
           <div class="right-section"></div>
         </div>
