@@ -49,24 +49,25 @@ class DetailComponent extends React.Component {
       <div className="container-fluid">
           <HeaderComponent/>
         <div className="row">
-          <div className="col-sm-12">
-            <Card>
-              <Card.Img
+          <div className="col-sm-8">
+          <Card.Img
                 variant="top"
                 src={`http://localhost:4000/uploads/${this.state.product.image}`}
-                style={{ width: "1000px", height: "400px" }}
+                style={{ width: "", height: "400px" }}
               />
+              </div>
+              <div className="col-sm-4">
+            
               <Card.Body>
-                <Card.Title name="name">{this.state.product.name}</Card.Title>
-                <Card.Title name="price">
-                  Rs/-{this.state.product.price}
-                </Card.Title>
-                <Card.Text name="description">
+               <h1  style={{ color:"#810541" }} className="text-center">Product Name: {this.state.product.name}</h1> 
+                <h2 style={{ color:"#E56717", marginTop:"20px" }}> Price : Rs {this.state.product.price}/-</h2> 
+                
+                <h5 name="description" style={{ color:"#E56717", marginTop:"20px" }}>
                   Description: {this.state.product.description}
-                </Card.Text>
-                <Card.Text name="specification">
-                  Specification: {this.state.product.specification}
-                </Card.Text>
+                </h5>
+                <h5 name="usage" style={{ color:"#E56717", marginTop:"20px", marginBottom:"40px" }}>
+                  Usage: {this.state.product.usage}
+                </h5>
                 <Button
                   variant="primary"
                   onClick={() => this.addtocart(this.state.product._id)}
@@ -79,8 +80,8 @@ class DetailComponent extends React.Component {
                   </Button>
                 </NavLink>
               </Card.Body>
-            </Card>
-          </div>
+
+        </div>
         </div>
       </div>
     );
@@ -88,3 +89,5 @@ class DetailComponent extends React.Component {
 }
 
 export default DetailComponent;
+
+

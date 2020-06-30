@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import './login.scss'
 import SimpleReactValidator from "simple-react-validator";
+import AdBlockDetect from 'react-ad-block-detect';
+import Swal from 'sweetalert2';
 import {
     Container, Col, Form, FormGroup, Label, Input, Button, FormText
 } from 'reactstrap'
@@ -16,7 +18,7 @@ class LoginComponent extends Component {
           password: "",
           isLoggedIn: false,
           nameError: "",
-          passworderror: ""
+          passworderror: "",
         };
         this.validator = new SimpleReactValidator();
       }
@@ -28,7 +30,8 @@ class LoginComponent extends Component {
       };
     
       handleClick = e => {
-        if (this.validator.allValid()) {
+        if (this.validator.allValid()) 
+        {
           e.preventDefault();
           axios
             .post("http://localhost:4000/register/login_user", this.state)
@@ -39,26 +42,32 @@ class LoginComponent extends Component {
               this.setState({
                 email: "",
                 password: "",
-                isLoggedIn: true
+                isLoggedIn: true,
+                isinvalid:false
               });
+              Swal.fire({
+                title: 'This Site uses cookies for enhancing your experience',
+                text: 'Are you okay with this ?',
+                icon: 'success',
+                confirmButtonText: 'Okay',
+                cancelButtonText:'Cancel'
+              })
             })
             .catch(err => console.log(err))
-           
         }
-         else {
+         else 
+         {
           this.validator.showMessages();
           this.forceUpdate();
         }
       };
     render() {
-
         if (this.state.isLoggedIn === true) {
             return <Redirect to='/dashboard' />
         }
         return (
             <html lang="en" >
 <body>
- 
 <div class="container">
   <div class="left-section">
     <div class="header">

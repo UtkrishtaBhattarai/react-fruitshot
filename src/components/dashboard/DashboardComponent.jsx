@@ -40,25 +40,18 @@ class DashboardComponent extends React.Component {
   render() {
     const mydata = this.state.products.map(productlist => {
       return (
-        <Card style={{ width: "18rem", marginLeft: "3rem", marginTop: "1rem" }}>
-          <NavLink to={`/detailproduct/${productlist._id}`}>
-            <Card.Img
-              variant="top"
-              src={`http://localhost:4000/uploads/${productlist.image}`}
-              style={{ width: "200px", height: "180px" }}
-            />
-          </NavLink>
-          <Card.Body>
-            <Card.Title>{productlist.name}</Card.Title>
-            <Card.Title>Rs/-{productlist.price}</Card.Title>
-            <Card.Text className="yo">
-              Description: {productlist.description}
-            </Card.Text>
-            <NavLink to={`/detailproduct/${productlist._id}`}>
-              <a className="text-center" variant="primary">View More</a>
-            </NavLink>
-          </Card.Body>
-        </Card>
+        <div class="flip-card" style={{ width: "300px", height:'300px', marginLeft:"16px",marginRight:'50px', marginTop:'20px' }}>
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <img src="img_avatar.png" alt="Avatar" src={`http://localhost:4000/uploads/${productlist.image}`} style={{ width: "300px", height:'300px' }}/>
+          </div>
+          <div class="flip-card-back">
+            <h1>{productlist.name}</h1>
+            <h3>Rs {productlist.price}/-</h3>
+            <NavLink to={`/detailproduct/${productlist._id}`}><p>View More!!</p></NavLink>
+          </div>
+        </div>
+      </div>
       );
     });
     return (
@@ -74,8 +67,8 @@ class DashboardComponent extends React.Component {
               alt="First slide"
             />
             <Carousel.Caption>
-              <h3>Spare World</h3>
-              <p>We deal with all kinds of spare parts.</p>
+              <h3>Fruitshot</h3>
+              <p>We deal with the best food and vegetables.</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -87,8 +80,8 @@ class DashboardComponent extends React.Component {
             />
 
             <Carousel.Caption>
-              <h3>Bajaj</h3>
-              <p>We focus on Bajaj genuine parts</p>
+              <h3>Quakity</h3>
+              <p>We focus on quality</p>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -100,11 +93,12 @@ class DashboardComponent extends React.Component {
             />
 
             <Carousel.Caption>
-              <h3>BMW</h3>
-              <p>We deal with BMW too </p>
+              <h3>Affordable</h3>
+              <p>We provide quality foods</p>
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
+        <h2 className="text-center alert alert-success edit-me" style={{color:"#FF8C00" }}>View More Products from Fruitshot</h2>
         <div className="row">{mydata}</div>
       </div>
     );

@@ -186,7 +186,7 @@ class ProductComponent extends React.Component {
     <input type="number" required
                       name="price"
                       value={this.state.price}
-                      onChange={this.handleChange} name="field2" class="field-style field-split align-right" placeholder="Price" />
+                      onChange={this.handleChange}  class="field-style field-split align-right" placeholder="Price" />
                    {this.validator.message(
                       "Price",
                       this.state.price,
