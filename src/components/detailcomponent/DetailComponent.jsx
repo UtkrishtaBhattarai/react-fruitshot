@@ -47,7 +47,7 @@ class DetailComponent extends React.Component {
     }
     return (
       <div className="container-fluid">
-          <HeaderComponent></HeaderComponent>
+          <HeaderComponent/>
         <div className="row">
           <div className="col-sm-12">
             <Card>

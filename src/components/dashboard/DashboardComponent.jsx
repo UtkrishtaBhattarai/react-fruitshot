@@ -4,6 +4,7 @@ import "./dashboard.css";
 import { Button, Card, Col, Carousel } from "react-bootstrap";
 import { Route, NavLink, Switch } from "react-router-dom";
 import DetailComponent from "../detailcomponent/DetailComponent";
+import HeaderComponent from '../usernavigation/HeaderComponent';
 import { Link, Redirect } from "react-router-dom";
 import image1 from "./img1.webp";
 import image2 from "./img2.webp";
@@ -62,6 +63,7 @@ class DashboardComponent extends React.Component {
     });
     return (
       <div className="container-fluid">
+          <HeaderComponent/>
         <Carousel>
           <Carousel.Item>
             <img
