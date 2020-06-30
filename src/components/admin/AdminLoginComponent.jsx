@@ -31,10 +31,10 @@ class AdminLoginComponent extends Component {
         if (this.validator.allValid()) {
           e.preventDefault();
           axios
-            .post("http://localhost:4000/register/login_user", this.state)
+            .post("http://localhost:4000/register/login_admin", this.state)
             .then(response => {
               console.log(response);
-              localStorage.setItem("token", response.data.token);
+              localStorage.setItem("token", "tokenhoma");
     
               console.log(response.data.token);
               this.setState({
@@ -50,9 +50,8 @@ class AdminLoginComponent extends Component {
         }
       };
     render() {
-
         if (this.state.isLoggedIn === true) {
-            return <Redirect to='/admin' />
+            return <Redirect to='admin/viewusers' />
         }
         return (
             <html lang="en" >

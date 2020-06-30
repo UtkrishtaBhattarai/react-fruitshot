@@ -15,7 +15,7 @@ class RegisterComponent extends React.Component {
       lname: "",
       address: "",
       email: "",
-      number: "",
+      phone: "",
       password: "",
       isRegistered: false
     };
@@ -42,7 +42,7 @@ class RegisterComponent extends React.Component {
             lname: "",
             address: "",
             email: "",
-            number: "",
+            phone: "",
             password: "",
             isRegistered: true
           });
@@ -108,11 +108,11 @@ class RegisterComponent extends React.Component {
                             )}
 
 
-<input type="text" class="form-field animation a3" value={this.state.number} name="number"
+<input type="text" class="form-field animation a3" value={this.state.phone} name="phone"
                               onChange={this.handleChange} placeholder="Number"/>
                                {this.validator.message(
                               "Phone Number",
-                              this.state.number,
+                              this.state.phone,
                               "required|phone"
                             )}
 

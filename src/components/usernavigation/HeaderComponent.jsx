@@ -104,7 +104,7 @@ class HeaderComponent extends React.Component {
          
           {/* <Route path="/about" component={AboutComponent} />
           <PrivateRoute path="/profile" component={ProfileComponent} />
-          <Route path="/detailproduct/:id" exact component={DetailComponent} />
+         
           <Route path="/cart" component={CartComponent} />
           <Route path="/myorders" component={MyOrderComponent} />
           <Route path="/order/:id" component={UserOrderComponent} />
