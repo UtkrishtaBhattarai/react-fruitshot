@@ -38,7 +38,7 @@ class UserViewAdminComponent extends React.Component {
     }
   };
   render() {
-    if (localStorage.getItem("token") != "tokenhoma") {
+    if (localStorage.getItem("a_token") != "tokenhoma") {
       return <Redirect to="/adminlogin" />;
     }
     const mydata = this.state.users.map(users => {

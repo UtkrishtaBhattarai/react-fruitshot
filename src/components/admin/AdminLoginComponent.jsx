@@ -34,7 +34,7 @@ class AdminLoginComponent extends Component {
             .post("http://localhost:4000/register/login_admin", this.state)
             .then(response => {
               console.log(response);
-              localStorage.setItem("token", "tokenhoma");
+              localStorage.setItem("a_token", "tokenhoma");
     
               console.log(response.data.token);
               this.setState({

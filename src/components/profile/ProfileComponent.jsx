@@ -4,13 +4,14 @@ import { Link, Redirect, NavLink } from "react-router-dom";
 import HeaderComponent from "../usernavigation/HeaderComponent";
 import SimpleReactValidator from "simple-react-validator";
 import './profile.scss'
+import NavBarComponent from "../usernavigation/NavbarComponent";
 
 class ProfileComponent extends React.Component {
  
   constructor(props) {
     super(props)
     this.state = {
-        register: null,
+        register: [],
         userid: localStorage.getItem("userid"),
         config: {
           headers: { Authorization: "Bearer " + localStorage.getItem("token") }
@@ -67,7 +68,7 @@ class ProfileComponent extends React.Component {
     }
     return (
       <div class="container-fluid">
-          <HeaderComponent/>
+         <NavBarComponent/>
           <div class="left-section">
             <div class="header">
               <h1 class="animation a1">Your Details Here!</h1>

@@ -10,12 +10,34 @@ import {
 	Button,
 	FormControl,
 } from "react-bootstrap";
+import { UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 import logo from "./fruitshot.png";
 
 import { FaCartPlus } from "react-icons/fa";
 
 class NavBarComponent extends Component {
-	state = {};
+	constructor(props) {
+		super(props)
+		this.state = {
+			register: null,
+			userid: localStorage.getItem("userid"),
+			config: {
+			  headers: { Authorization: "Bearer " + localStorage.getItem("token") }
+			}
+			
+		  };
+	  }
+
+	
+	  handleLogout = e => {
+		e.preventDefault();
+		localStorage.removeItem("token");
+		localStorage.removeItem("userid");
+		localStorage.removeItem("name")
+		window.location.href = '/login';
+	  };
+
+	
 
 	render() {
 		const handleSelect = (eventKey) => alert(`selected ${eventKey}`);
@@ -37,28 +59,55 @@ class NavBarComponent extends Component {
 						style={{ backgroundColor: "#613f99" }}
 					>
 						<Nav className="mr-auto">
-							<Nav.Link style={{ color: "#fff" }} href="/">
-								Home
+						
+							<Nav.Link style={{ color: "#fff" }} href="/cart">
+								<img src="https://image.flaticon.com/icons/png/512/275/275804.png" style={{width:"30px", height:"30px"}}></img>Cart
 							</Nav.Link>
 
-							<Nav.Link style={{ color: "#fff" }} href="/login">
-								Login
-							</Nav.Link>
-							<Nav.Link style={{ color: "#fff" }} href="/profile">
-								Profile
-							</Nav.Link>
+
+							<UncontrolledDropdown style={{color:"white"}} setActiveFromChild>
+          <DropdownToggle tag="a" className="nav-link" caret>
+     <img src="https://www.cubecart.com/img/sellers/173/239/master.PNG" style={{width:"30px",height:"20px"}}/> Order
+          </DropdownToggle>
+          <DropdownMenu>
+            <DropdownItem tag="a" href="/myorders"> <img src="https://www.curiousfinds.com/assets/images/purchase.png" style={{width:"30px", height:"30px"}}></img>Order History</DropdownItem>
+			<DropdownItem tag="a" href="/checkorder"> <img src="https://cdn0.iconfinder.com/data/icons/cosmetic-store/25/Order_Status-512.png" style={{width:"30px", height:"30px"}}></img>Order Status</DropdownItem>
+          </DropdownMenu>
+        </UncontrolledDropdown>
+
+							
+							
+						
 						</Nav>
 						<Nav>
-                        <NavDropdown title="Profile" id="nav-dropdown">
-							<NavDropdown.Item eventKey="4.1">Action</NavDropdown.Item>
-							<NavDropdown.Item eventKey="4.2">Another action</NavDropdown.Item>
-							<NavDropdown.Item eventKey="4.3">
-								Something else here
-							</NavDropdown.Item>
-							<NavDropdown.Divider />
-							<NavDropdown.Item eventKey="4.4">Separated link</NavDropdown.Item>
-						</NavDropdown>
+
+						<UncontrolledDropdown style={{color:"white"}} setActiveFromChild>
+          <DropdownToggle tag="a" className="nav-link" caret>
+		  <img src="https://www.shareicon.net/data/2016/09/01/822727_user_512x512.png" style={{width:"30px", height:"30px"}}></img>
+          </DropdownToggle>
+          <DropdownMenu>
+         
+
+
+			<DropdownItem  tag="a" onClick={this.handleLogout}> <img src="https://th.bing.com/th/id/OIP.eWqY1hPQidmsZjo0XP8tpwHaHa?pid=Api&rs=1" style={{width:"30px", height:"30px"}}></img>Logout</DropdownItem>
+			<DropdownItem tag="a" href="/profile"><img src="https://cdn3.iconfinder.com/data/icons/rcons-e-mail-client/32/search_contact_mail-512.png" style={{width:"30px", height:"30px"}}></img>View Profile</DropdownItem>
+			<DropdownItem tag="a" href="/checkorder"> <img src="https://th.bing.com/th/id/OIP.g8beJe2R0TpPCftfEcqIUwHaF8?pid=Api&rs=1" style={{width:"30px", height:"30px"}}></img>Delete Profile</DropdownItem>
+          </DropdownMenu>
+        </UncontrolledDropdown>
+							<Nav.Link style={{ color: "#fff" }} href="/login">
+							<img src="https://th.bing.com/th/id/OIP.4GUgfdIa-ZTmhyayR7g35wHaHa?pid=Api&rs=1" style={{width:"20px", height:"20px"}}></img>
+							Login
+							</Nav.Link>
+
+							<Nav.Link style={{ color: "#fff" }} href="/register">
+							<img src="https://th.bing.com/th/id/OIP.sYKmO23D9gxcd-2ThzxTZAHaIe?pid=Api&rs=1" style={{width:"20px", height:"20px"}}></img>
+							Register
+							</Nav.Link>
+							
+						
+
                         </Nav>
+						
 					</Navbar.Collapse>
 				</Navbar>
 				<Switch></Switch>

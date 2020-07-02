@@ -3,6 +3,9 @@ import axios from "axios";
 import { Route, NavLink, Switch, Redirect } from "react-router-dom";
 import { Button, Card, Col } from "react-bootstrap";
 import HeaderComponent from '../usernavigation/HeaderComponent';
+import NavBarComponent from "../usernavigation/NavbarComponent";
+import Swal from 'sweetalert2';
+import './detailcomponent.scss'
 
 class DetailComponent extends React.Component {
   state = {
@@ -31,12 +34,21 @@ class DetailComponent extends React.Component {
       .post("http://localhost:4000/cart/checkcart/", this.state)
       .then(value => {
         const khai = value.data.status;
-
         if (khai == "cantadd") {
-          alert("You have this item already added to cart");
+          Swal.fire({
+            title: 'Cannot Add, Already added!',
+            text: 'You Have already added to the cart',
+            icon: 'error',
+            confirmButtonText: 'Cool'
+          })
           return;
         } else if (khai == "addhere") {
-          alert("Product added to cart successfully");
+          Swal.fire({
+            title: 'Added to the cart!',
+            text: 'You Have Added to the cart| Please Check your cart',
+            icon: 'success',
+            confirmButtonText: 'Cool'
+          })
           axios.post("http://localhost:4000/cart/addcart1", this.state);
         }
       });
@@ -47,7 +59,7 @@ class DetailComponent extends React.Component {
     }
     return (
       <div className="container-fluid">
-          <HeaderComponent/>
+          <NavBarComponent/>
         <div className="row">
           <div className="col-sm-8">
           <Card.Img
@@ -58,28 +70,16 @@ class DetailComponent extends React.Component {
               </div>
               <div className="col-sm-4">
             
-              <Card.Body>
-               <h1  style={{ color:"#810541" }} className="text-center">Product Name: {this.state.product.name}</h1> 
-                <h2 style={{ color:"#E56717", marginTop:"20px" }}> Price : Rs {this.state.product.price}/-</h2> 
-                
-                <h5 name="description" style={{ color:"#E56717", marginTop:"20px" }}>
-                  Description: {this.state.product.description}
-                </h5>
-                <h5 name="usage" style={{ color:"#E56717", marginTop:"20px", marginBottom:"40px" }}>
-                  Usage: {this.state.product.usage}
-                </h5>
-                <Button
-                  variant="primary"
-                  onClick={() => this.addtocart(this.state.product._id)}
-                >
-                  Add to cart
-                </Button>
-                <NavLink to={`/order/${this.state.product._id}`}>
-                  <Button style={{ marginLeft: "10px" }} variant="primary">
-                    Buy Now
-                  </Button>
+              <div class="card1">
+  <h1>{this.state.product.name}</h1>
+  <p class="price1"> Rs {this.state.product.price}/-</p>
+  <p> Description: {this.state.product.description}</p>
+  <p><button style={{marginTop:"160px"}} onClick={() => this.addtocart(this.state.product._id)}>Add to Cart</button></p>
+  
+  <NavLink to={`/order/${this.state.product._id}`}>
+  <p><button style={{marginTop:"10px", background:"green"}}>Buy Now</button></p>
                 </NavLink>
-              </Card.Body>
+</div>
 
         </div>
         </div>

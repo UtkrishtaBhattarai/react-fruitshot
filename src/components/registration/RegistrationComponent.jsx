@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 // import DashboardComponent from "../dashboard/DashboardComponent";
 import axios from "axios";
 import SimpleReactValidator from "simple-react-validator";
+import NavBarComponent from "../usernavigation/NavbarComponent";
 class RegisterComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -60,15 +61,18 @@ class RegisterComponent extends React.Component {
     }
   };
   render() {
-    // if (this.state.isRegistered === true) {
-    //   return <Redirect to="/dashboard" />;
-    // }
-    // if (localStorage.getItem("userid") != null) {
-    //   return <Redirect to="/dashboard" />;
-    // }
+    if (this.state.isRegistered === true) {
+      return <Redirect to="/" />;
+    }
+    if (localStorage.getItem("userid") != null) {
+      return <Redirect to="/" />;
+    }
     return (
         <body>
- 
+ <div>
+   <div className="container-fluid">
+<NavBarComponent></NavBarComponent>
+   </div>
         <div class="container">
           <div class="left-section">
             <div class="header">
@@ -131,6 +135,7 @@ class RegisterComponent extends React.Component {
             <p className="text-center"><Link to='/'> Login Here!</Link></p>
           </div>
           <div class="right-section"></div>
+        </div>
         </div>
           
         </body>

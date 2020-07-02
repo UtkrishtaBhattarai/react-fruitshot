@@ -18,17 +18,17 @@ body {
   justify-content: center;
   -webkit-animation-name: left-section;
           animation-name: left-section;
-  -webkit-animation-duration: 1s;
-          animation-duration: 1s;
+  -webkit-animation-duration: 0.2s;
+          animation-duration: 0.2s;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
 }
 .right-section {
   flex: 1;
   background: linear-gradient(to right, #f50629 0%, #fd9d08 100%);
-  transition: 1s;
+  transition: 0.2s;
   background-image: url(https://cdn.pixabay.com/photo/2017/10/31/17/44/cherries-2905964_1280.jpg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -86,33 +86,33 @@ body {
           animation-duration: .4s;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
 }
  
 .a1 {
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
+  -webkit-animation-delay: 0.2s;
+          animation-delay: .2s;
 }
 .a2 {
-  -webkit-animation-delay: 2.1s;
-          animation-delay: 2.1s;
+  -webkit-animation-delay: .2.1s;
+          animation-delay: .2.1s;
 }
 .a3 {
-  -webkit-animation-delay: 2.2s;
-          animation-delay: 2.2s;
+  -webkit-animation-delay: .2.2s;
+          animation-delay: .2.2s;
 }
 .a4 {
-  -webkit-animation-delay: 2.3s;
-          animation-delay: 2.3s;
+  -webkit-animation-delay: .2.3s;
+          animation-delay: .2.3s;
 }
 .a5 {
-  -webkit-animation-delay: 2.4s;
-          animation-delay: 2.4s;
+  -webkit-animation-delay: .2.4s;
+          animation-delay: .2.4s;
 }
 .a6 {
-  -webkit-animation-delay: 2.5s;
-          animation-delay: 2.5s;
+  -webkit-animation-delay: .2.5s;
+          animation-delay: .2.5s;
 }
 @keyframes move {
   0% {

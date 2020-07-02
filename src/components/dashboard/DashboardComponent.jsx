@@ -52,13 +52,13 @@ class DashboardComponent extends React.Component {
 			return (
 				<Card
 					className="cardStyles"
-					style={{ width: "18rem", marginTop: "2rem", marginLeft: "2rem" }}
+					style={{ width: "18rem", marginTop: "10px", marginLeft: "2px" }}
 				>
 					<div className="overflow">
 						<NavLink to={`/detailproduct/${products._id}`}>
 							<Card.Img
 								className="cardImage"
-								variant="top"
+								variant="top" style={{height:"300px", width:"300px"}}
 								src={`http://localhost:4000/uploads/${products.image}`}
 							/>
 						</NavLink>
@@ -84,7 +84,7 @@ class DashboardComponent extends React.Component {
 			return (
 				<Carousel.Item>
 					<img
-						className="d-block w-100"
+						className="d-block w-100" style={{width:"1140px", height:"400px"}}
 						src={`http://localhost:4000/uploads/${slider.image}`}
 						alt="First slide"
 					/>
@@ -98,7 +98,7 @@ class DashboardComponent extends React.Component {
 				<div className="container-fluid">
 					<div className="row">
 						<div className="col-md-12">
-							<Carousel indicators={false} style={{ marginTop: "0.5rem" }}>
+							<Carousel indicators={false} style={{ marginTop: "-0.4rem" }}>
 								{slider}
 							</Carousel>
 						</div>

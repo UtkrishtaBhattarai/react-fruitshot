@@ -17,6 +17,7 @@ import Swal from "sweetalert2";
 import PrivateRoute from "../src/components/PrivateRoute";
 import ProfileComponent from "./components/profile/ProfileComponent";
 import SliderComponent from "./components/admin/slideradd/SliderComponent";
+import CartComponent from "./components/cart/CartComponent"
 
 function App() {
 	return (
@@ -32,6 +33,7 @@ function App() {
 				<Route path="/detailproduct/:id" exact component={DetailComponent} />
 				<Route path="/admin/slider" component={SliderComponent} />
 				<PrivateRoute path="/profile" component={ProfileComponent} />
+				<Route path="/cart" component={CartComponent} />
 				<Route>
 					<NoMatch />
 				</Route>

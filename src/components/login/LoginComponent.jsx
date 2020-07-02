@@ -8,6 +8,7 @@ import {
     Container, Col, Form, FormGroup, Label, Input, Button, FormText
 } from 'reactstrap'
 import axios from 'axios'
+import NavBarComponent from '../usernavigation/NavbarComponent';
 
 class LoginComponent extends Component {
     constructor(props) {
@@ -38,7 +39,9 @@ class LoginComponent extends Component {
             .then(response => {
               console.log(response);
               localStorage.setItem("token", response.data.token);
+              localStorage.setItem("name",response.data.name)
               console.log(response.data.token);
+              console.log(response.data.name)
               this.setState({
                 email: "",
                 password: "",
@@ -63,11 +66,18 @@ class LoginComponent extends Component {
       };
     render() {
         if (this.state.isLoggedIn === true) {
-            return <Redirect to='/dashboard' />
+            return <Redirect to='/' />
+        }
+        if (localStorage.getItem("userid") != null) {
+          return <Redirect to="/" />;
         }
         return (
             <html lang="en" >
 <body>
+  <div>
+    <div className="container-fluid">
+      <NavBarComponent></NavBarComponent>
+      </div>
 <div class="container">
   <div class="left-section">
     <div class="header">
@@ -95,6 +105,7 @@ class LoginComponent extends Component {
     </div>
   </div>
   <div class="right-section"></div>
+</div>
 </div>
   
 </body>
