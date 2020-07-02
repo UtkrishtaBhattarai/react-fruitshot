@@ -10,6 +10,8 @@ import image1 from "./img1.webp";
 import image2 from "./img2.webp";
 import image3 from "./img3.webp";
 import "../css/Dashboard.css";
+import NavbarComponent from "../usernavigation/NavbarComponent";
+import NavBarComponent from "../usernavigation/NavbarComponent";
 class DashboardComponent extends React.Component {
 	state = {
 		products: [],
@@ -92,11 +94,11 @@ class DashboardComponent extends React.Component {
 
 		return (
 			<React.Fragment>
-				<HeaderComponent></HeaderComponent>
+				<NavBarComponent></NavBarComponent>
 				<div className="container-fluid">
 					<div className="row">
 						<div className="col-md-12">
-            <Carousel indicators={false} style={{ marginTop: "0.5rem" }}>
+							<Carousel indicators={false} style={{ marginTop: "0.5rem" }}>
 								{slider}
 							</Carousel>
 						</div>
