@@ -31,7 +31,7 @@ class AdminHeaderComponent extends React.Component {
 								</a>
 							</li>
 
-							<li className="nav-item active">
+							<li className="nav-item">
 								<a className="nav-link" href="/admin/productsadd">
 									Products
 								</a>
@@ -44,39 +44,15 @@ class AdminHeaderComponent extends React.Component {
 							</li>
 
 							<li className="nav-item">
-								<a className="nav-link" href="/bajajproduct">
-									Bajaj Products
-								</a>
-							</li>
-
-							<li className="nav-item">
 								<a className="nav-link" href="/orders">
 									Orders
 								</a>
 							</li>
 
-							{/* <li className="nav-item">
-                                <a className="nav-link" href="/profile">Profile</a>
-                            </li> */}
 						</ul>
-						<form className="form-inline my-2 my-lg-0">
-							<input
-								className="form-control mr-sm-2"
-								type="search"
-								placeholder="Search"
-								aria-label="Search"
-							/>
-							<button
-								className="btn btn-outline-success my-2 my-sm-0"
-								type="submit"
-							>
-								Search
-							</button>
-						</form>
 					</div>
 				</nav>
 				<Switch>
-					{/* <Route path="/bajajproduct" component={BajajProductComponent} /> */}
 					{/* <Route path="/orders" component={OrderComponent} /> */}
 				</Switch>
 			</div>
