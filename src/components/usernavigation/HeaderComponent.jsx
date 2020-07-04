@@ -97,7 +97,7 @@ class HeaderComponent extends React.Component {
          
           <Route path="/cart" component={CartComponent} />
           <Route path="/myorders" component={MyOrderComponent} />
-          <Route path="/order/:id" component={UserOrderComponent} />
+          
           <Route path="/checkorder" component={OrderStatusComponent} />
           <Route path="/notification" component={NotificationComponent} /> */}
         </Switch>

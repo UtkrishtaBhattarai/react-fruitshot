@@ -53,7 +53,6 @@ class AdminHeaderComponent extends React.Component {
 					</div>
 				</nav>
 				<Switch>
-					{/* <Route path="/orders" component={OrderComponent} /> */}
 				</Switch>
 			</div>
 		);

@@ -18,6 +18,9 @@ import PrivateRoute from "../src/components/PrivateRoute";
 import ProfileComponent from "./components/profile/ProfileComponent";
 import SliderComponent from "./components/admin/slideradd/SliderComponent";
 import CartComponent from "./components/cart/CartComponent"
+import UserOrderComponent from "./components/userorder/UserOrderComponent"
+import OrderComponent from "./components/admin/vieworder/OrderComponent"
+import OrderStatusComponent from "./components/orderstatus/OrderStatusComponent"
 
 function App() {
 	return (
@@ -34,6 +37,9 @@ function App() {
 				<Route path="/admin/slider" component={SliderComponent} />
 				<PrivateRoute path="/profile" component={ProfileComponent} />
 				<Route path="/cart" component={CartComponent} />
+				 <Route path="/orders" component={OrderComponent} />
+				<Route path="/order/:id" component={UserOrderComponent} />
+				<Route path="/checkorder" component={OrderStatusComponent} />
 				<Route>
 					<NoMatch />
 				</Route>
