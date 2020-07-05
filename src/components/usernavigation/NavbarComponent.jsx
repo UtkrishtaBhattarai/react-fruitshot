@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-
-import { Route, NavLink, Switch, BrowserRouter } from "react-router-dom";
+import { Link, Redirect, NavLink } from "react-router-dom";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
 
 import {
 	Navbar,
@@ -39,7 +39,6 @@ class NavBarComponent extends Component {
 	  };
 
 	
-
 	render() {
 		const handleSelect = (eventKey) => alert(`selected ${eventKey}`);
 		return (
@@ -75,9 +74,7 @@ class NavBarComponent extends Component {
 			<DropdownItem tag="a" href="/checkorder"> <img src="https://cdn0.iconfinder.com/data/icons/cosmetic-store/25/Order_Status-512.png" style={{width:"30px", height:"30px"}}></img>Order Status</DropdownItem>
           </DropdownMenu>
         </UncontrolledDropdown>
-
-							
-							
+								
 						
 						</Nav>
 						<Nav>
@@ -89,7 +86,7 @@ class NavBarComponent extends Component {
           <DropdownMenu>
          
 
-
+		<DropdownItem  tag="a" >Name: <b> {localStorage.getItem("name")} </b></DropdownItem>
 			<DropdownItem  tag="a" onClick={this.handleLogout}> <img src="https://th.bing.com/th/id/OIP.eWqY1hPQidmsZjo0XP8tpwHaHa?pid=Api&rs=1" style={{width:"30px", height:"30px"}}></img>Logout</DropdownItem>
 			<DropdownItem tag="a" href="/profile"><img src="https://cdn3.iconfinder.com/data/icons/rcons-e-mail-client/32/search_contact_mail-512.png" style={{width:"30px", height:"30px"}}></img>View Profile</DropdownItem>
 			<DropdownItem tag="a" href="/checkorder"> <img src="https://th.bing.com/th/id/OIP.g8beJe2R0TpPCftfEcqIUwHaF8?pid=Api&rs=1" style={{width:"30px", height:"30px"}}></img>Delete Profile</DropdownItem>

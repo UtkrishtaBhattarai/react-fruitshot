@@ -69,6 +69,8 @@ class ProfileComponent extends React.Component {
     return (
       <div class="container-fluid">
          <NavBarComponent/>
+        <div className="row">
+        <div className="col-sm-4">
           <div class="left-section">
             <div class="header">
               <h1 class="animation a1">Your Details Here!</h1>
@@ -136,6 +138,11 @@ class ProfileComponent extends React.Component {
                     Logout
                   </button>
               </div>
+            </div>
+            </div>
+            <div className="col-sm-8">
+             <img style={{width:"100%",height:"540px"}} src="https://static-communitytable.parade.com/wp-content/uploads/2014/07/seasonal-produce-ftr.jpg"/>
+            </div>
             </div>
           </div>
     );
