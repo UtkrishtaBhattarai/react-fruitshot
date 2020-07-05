@@ -17,34 +17,36 @@ import Swal from "sweetalert2";
 import PrivateRoute from "../src/components/PrivateRoute";
 import ProfileComponent from "./components/profile/ProfileComponent";
 import SliderComponent from "./components/admin/slideradd/SliderComponent";
-import CartComponent from "./components/cart/CartComponent"
-import UserOrderComponent from "./components/userorder/UserOrderComponent"
-import OrderComponent from "./components/admin/vieworder/OrderComponent"
-import OrderStatusComponent from "./components/orderstatus/OrderStatusComponent"
+import CartComponent from "./components/cart/CartComponent";
+import UserOrderComponent from "./components/userorder/UserOrderComponent";
+import OrderComponent from "./components/admin/vieworder/OrderComponent";
+import OrderStatusComponent from "./components/orderstatus/OrderStatusComponent";
+import AddNotification from "./components/admin/addnotification/AddNotification";
 
 function App() {
-	return (
-		<BrowserRouter>
-			<Switch>
-				<Route exact path="/login" component={LoginComponent} />
-				<Route path="/register" component={RegisterComponent} />
-				<Route exact path="/" component={DashboardComponent} />
-				<Route exact path="/dashboard" component={DashboardComponent} />
-				<Route path="/adminlogin" component={AdminLoginComponent} />
-				<Route path="/admin/viewusers" component={UserViewAdminComponent} />
-				<Route path="/admin/productsadd" component={ProductComponent} />
-				<Route path="/detailproduct/:id" exact component={DetailComponent} />
-				<Route path="/admin/slider" component={SliderComponent} />
-				<PrivateRoute path="/profile" component={ProfileComponent} />
-				<Route path="/cart" component={CartComponent} />
-				 <Route path="/orders" component={OrderComponent} />
-				<Route path="/order/:id" component={UserOrderComponent} />
-				<Route path="/checkorder" component={OrderStatusComponent} />
-				<Route>
-					<NoMatch />
-				</Route>
-			</Switch>
-		</BrowserRouter>
-	);
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route exact path="/login" component={LoginComponent} />
+        <Route path="/register" component={RegisterComponent} />
+        <Route exact path="/" component={DashboardComponent} />
+        <Route exact path="/dashboard" component={DashboardComponent} />
+        <Route path="/adminlogin" component={AdminLoginComponent} />
+        <Route path="/admin/viewusers" component={UserViewAdminComponent} />
+        <Route path="/admin/productsadd" component={ProductComponent} />
+        <Route path="/detailproduct/:id" exact component={DetailComponent} />
+        <Route path="/admin/slider" component={SliderComponent} />
+        <PrivateRoute path="/profile" component={ProfileComponent} />
+        <Route path="/cart" component={CartComponent} />
+        <Route path="/orders" component={OrderComponent} />
+        <Route path="/order/:id" component={UserOrderComponent} />
+        <Route path="/checkorder" component={OrderStatusComponent} />
+        <Route path="/addnotification" component={AddNotification} />
+        <Route>
+          <NoMatch />
+        </Route>
+      </Switch>
+    </BrowserRouter>
+  );
 }
 export default App;
