@@ -40,7 +40,7 @@ class CartComponent extends React.Component {
         const mydata = this.state.cart.map(cart => {
             return (
                
-                <div class="card">
+                <div class="card" style={{marginLeft:"50px", marginRight:"10px",marginTop:"20px"}}>
                    
   <img src={`http://localhost:4000/uploads/${cart.image}`} alt="Denim Jeans" style={{width:"100%",height:"200px"}}/>
   <h1>{cart.name}</h1>
@@ -49,7 +49,7 @@ class CartComponent extends React.Component {
   <p><button onClick={() => this.deletecart(cart._id)}>Delete Cart</button></p>
   
   <NavLink to={`/order/${cart.productid}`}>
-  <p><button className="btn btn-success" style={{background:"green"}}>Checkout</button></p>
+  <p><button className="btn btn-success" style={{background:"green", marginTop:"5px"}}>Checkout</button></p>
                                 </NavLink>
 </div>
             )

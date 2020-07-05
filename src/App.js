@@ -21,7 +21,8 @@ import CartComponent from "./components/cart/CartComponent"
 import UserOrderComponent from "./components/userorder/UserOrderComponent"
 import OrderComponent from "./components/admin/vieworder/OrderComponent"
 import OrderStatusComponent from "./components/orderstatus/OrderStatusComponent"
-
+import MyOrderComponent from "./components/myorders/MyOrderComponent"
+import DeleteProfileComponent from "./components/deleteprofile/DeleteProfileComponent"
 function App() {
 	return (
 		<BrowserRouter>
@@ -36,10 +37,12 @@ function App() {
 				<Route path="/detailproduct/:id" exact component={DetailComponent} />
 				<Route path="/admin/slider" component={SliderComponent} />
 				<PrivateRoute path="/profile" component={ProfileComponent} />
+				<PrivateRoute path="/deleteprofile" component={DeleteProfileComponent} />
 				<Route path="/cart" component={CartComponent} />
 				 <Route path="/orders" component={OrderComponent} />
 				<Route path="/order/:id" component={UserOrderComponent} />
 				<Route path="/checkorder" component={OrderStatusComponent} />
+				<Route path="/myorders" component={MyOrderComponent} />
 				<Route>
 					<NoMatch />
 				</Route>

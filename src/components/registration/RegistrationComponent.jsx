@@ -62,7 +62,7 @@ class RegisterComponent extends React.Component {
   };
   render() {
     if (this.state.isRegistered === true) {
-      return <Redirect to="/" />;
+      return <Redirect to="/login" />;
     }
     if (localStorage.getItem("userid") != null) {
       return <Redirect to="/" />;
