@@ -4,6 +4,12 @@ import ProductComponent from "../addproduct/ProductComponent";
 import UserViewAdminComponent from "../userviewadmin/UserViewAdminComponent";
 import SliderComponent from "../slideradd/SliderComponent";
 class AdminHeaderComponent extends React.Component {
+
+	handleLogout = e => {
+		e.preventDefault();
+		localStorage.removeItem("a_token");
+		window.location.href = '/adminlogin';
+	  };
 	render() {
 		return (
 			<div>
@@ -46,6 +52,12 @@ class AdminHeaderComponent extends React.Component {
 							<li className="nav-item">
 								<a className="nav-link" href="/orders">
 									Orders
+								</a>
+							</li>
+
+							<li className="nav-item" style={{marginLeft:"1000px"}}>
+								<a className="nav-link" onClick={this.handlelogout}>
+									Logout
 								</a>
 							</li>
 

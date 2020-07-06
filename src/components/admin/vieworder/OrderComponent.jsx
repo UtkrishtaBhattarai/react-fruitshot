@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import AdminHeaderComponent from "../adminheader/AdminHeaderComponent";
+import { Link, Redirect } from 'react-router-dom';
 class OrderComponent extends React.Component {
   state = {
     order: [],
@@ -29,6 +30,9 @@ class OrderComponent extends React.Component {
     }
   };
   render() {
+    if (localStorage.getItem("a_token") != "tokenhoma") {
+      return <Redirect to="/adminlogin" />;
+    }
     const mydata = this.state.order.map(order => {
       return (
         <tr>
