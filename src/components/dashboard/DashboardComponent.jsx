@@ -12,10 +12,14 @@ import image3 from "./img3.webp";
 import "../css/Dashboard.css";
 import NavbarComponent from "../usernavigation/NavbarComponent";
 import NavBarComponent from "../usernavigation/NavbarComponent";
+import SearchComponent from "../search/SearchComponent";
 class DashboardComponent extends React.Component {
 	state = {
 		products: [],
 		register: {},
+		query: "",
+		data: [],
+		filteredData: [],
 		slider: [],
 		productid: "",
 		userid: "",
@@ -47,12 +51,46 @@ class DashboardComponent extends React.Component {
 			});
 		});
 	}
+	handleInputChange = event => {
+		const query = event.target.value;
+	
+		this.setState(prevState => {
+		  const filteredData = prevState.data.filter(element => {
+			return element.name.toLowerCase().includes(query.toLowerCase());
+		  });
+	
+		  return {
+			query,
+			filteredData
+		  };
+		});
+	  };
+	
+	  getData = () => {
+		fetch(`http://localhost:4000/product/getproduct`)
+		  .then(response => response.json())
+		  .then(data => {
+			const { query } = this.state;
+			const filteredData = data.filter(element => {
+			  return element.name.toLowerCase().includes(query.toLowerCase());
+			});
+	
+			this.setState({
+			  data,
+			  filteredData
+			});
+		  });
+	  };
+	
+	  componentWillMount() {
+		this.getData();
+	  }
 	render() {
-		const mydata = this.state.products.map((products) => {
+		const mydata = this.state.filteredData.map((products) => {
 			return (
 				<Card
 					className="cardStyles"
-					style={{ width: "18rem", marginTop: "10px", marginLeft: "2px" }}
+					style={{ width: "18rem", marginTop: "10px", marginLeft: "-1rem" }}
 				>
 					<div className="overflow">
 						<NavLink to={`/detailproduct/${products._id}`}>
@@ -101,6 +139,11 @@ class DashboardComponent extends React.Component {
 							<Carousel indicators={false} style={{ marginTop: "-0.4rem" }}>
 								{slider}
 							</Carousel>
+							<input
+            placeholder="Search for..."
+            value={this.state.query}
+            onChange={this.handleInputChange}
+          />
 						</div>
 						{mydata}
 					</div>
