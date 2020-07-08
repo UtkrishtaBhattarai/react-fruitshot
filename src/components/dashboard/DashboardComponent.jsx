@@ -9,6 +9,8 @@ import {
 	Form,
 	FormControl,
 	InputGroup,
+	CardGroup,
+	CardDeck,
 } from "react-bootstrap";
 import { Route, NavLink, Switch } from "react-router-dom";
 import DetailComponent from "../detailcomponent/DetailComponent";
@@ -96,35 +98,37 @@ class DashboardComponent extends React.Component {
 	render() {
 		const mydata = this.state.filteredData.map((products) => {
 			return (
-				<Card
-					className="cardStyles"
-					style={{ width: "18rem", marginTop: "10px", marginLeft: "-1rem" }}
-				>
-					<div className="overflow">
-						<NavLink to={`/detailproduct/${products._id}`}>
-							<Card.Img
-								className="cardImage"
-								variant="top"
-								style={{ height: "300px", width: "300px" }}
-								src={`http://localhost:4000/uploads/${products.image}`}
-							/>
-						</NavLink>
-					</div>
-					<Card.Body>
-						<Card.Title style={{ color: "#f57224" }}>
-							Rs. {products.price}
-						</Card.Title>
-						<Card.Text
-							style={{
-								whiteSpace: "nowrap",
-								overflow: "hidden",
-								textOverflow: "ellipsis",
-							}}
-						>
-							{products.name}
-						</Card.Text>
-					</Card.Body>
-				</Card>
+				<CardGroup>
+					<Card
+						className="cardStyles"
+						style={{ width: "18rem", marginTop: "10px", marginLeft: "2rem" }}
+					>
+						<div className="overflow">
+							<NavLink to={`/detailproduct/${products._id}`}>
+								<Card.Img
+									className="cardImage"
+									variant="top"
+									style={{ height: "300px", width: "300px" }}
+									src={`http://localhost:4000/uploads/${products.image}`}
+								/>
+							</NavLink>
+						</div>
+						<Card.Body>
+							<Card.Title style={{ color: "#f57224" }}>
+								Rs. {products.price}
+							</Card.Title>
+							<Card.Text
+								style={{
+									whiteSpace: "nowrap",
+									overflow: "hidden",
+									textOverflow: "ellipsis",
+								}}
+							>
+								{products.name}
+							</Card.Text>
+						</Card.Body>
+					</Card>
+				</CardGroup>
 			);
 		});
 		const slider = this.state.slider.map((slider) => {
@@ -149,7 +153,7 @@ class DashboardComponent extends React.Component {
 							<Carousel indicators={false} style={{ marginTop: "-0.4rem" }}>
 								{slider}
 							</Carousel>
-							<InputGroup className="mb-3" style={{marginTop:"15px"}}>
+							<InputGroup className="mb-3" style={{ marginTop: "15px" }}>
 								<FormControl
 									style={{
 										backgroundColor: "rgb(97, 63, 153)",
