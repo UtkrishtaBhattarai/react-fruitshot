@@ -33,7 +33,6 @@ class NavBarComponent extends Component {
 		e.preventDefault();
 		localStorage.removeItem("token");
 		localStorage.removeItem("userid");
-		localStorage.removeItem("name");
 		localStorage.removeItem("email")
 		window.location.href = '/login';
 	  };

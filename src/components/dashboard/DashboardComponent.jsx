@@ -101,7 +101,7 @@ class DashboardComponent extends React.Component {
 				<CardGroup>
 					<Card
 						className="cardStyles"
-						style={{ width: "18rem", marginTop: "10px", marginLeft: "2rem" }}
+						style={{ width: "18rem", marginTop: "10px", marginLeft: "4rem" }}
 					>
 						<div className="overflow">
 							<NavLink to={`/detailproduct/${products._id}`}>

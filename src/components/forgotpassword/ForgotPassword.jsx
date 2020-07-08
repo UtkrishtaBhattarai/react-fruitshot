@@ -10,7 +10,8 @@ class ForgotPassword extends React.Component {
 
     this.state = {
       email: "",
-      password:  Math.random().toString(36).substring(7)
+      password:  Math.random().toString(36).substring(7),
+      ischanged:false
       
     };
     this.validator = new SimpleReactValidator();
@@ -23,7 +24,7 @@ class ForgotPassword extends React.Component {
   };
   componentDidMount() {
     this.setState({
-			ordernumber:this.state.password
+			password:this.state.password
     });
 	}
 
@@ -34,15 +35,14 @@ class ForgotPassword extends React.Component {
         .post("http://localhost:4000/register/forgotpassword", this.state)
         .then(response => {
           console.log(response.data);
-          localStorage.setItem("token", response.data.token);
-          console.log(response.data.token);
           this.setState({
             email: "",
             ordernumber:Math.random().toString(36).substring(7),
+            ischanged:true
           });
           Swal.fire({
             title: 'Success!',
-            text: 'You Have Changed ',
+            text: 'If you have entered correct credential, check your email',
             icon: 'success',
             confirmButtonText: 'Cool'
           })
@@ -54,6 +54,9 @@ class ForgotPassword extends React.Component {
     }
   };
   render() {
+    if (this.state.ischanged === true) {
+      return <Redirect to='/' />
+  }
     return (
         <body>
  <div>

@@ -40,18 +40,12 @@ class ProfileComponent extends React.Component {
     });
   };
 
-  handleLogout = e => {
-    e.preventDefault();
-    localStorage.removeItem("token");
-    localStorage.removeItem("userid");
-    this.props.history.push("/login");
-  };
   updateUser = e => {
     e.preventDefault();
     axios
       .put(
         "http://localhost:4000/register/me",
-        this.state.register,
+        this.state,
         this.state.config
       )
       .then(response => console.log(response.data))
@@ -78,7 +72,8 @@ class ProfileComponent extends React.Component {
             <div class="form">
               <input type="text" class="form-field animation a3"  name="fname"
                       autofocus
-                       value={this.state.register.fname}
+                      placeholder={this.state.register.fname}
+                       value={this.state.fname}
                       onChange={this.handleChange}/>
                                {this.validator.message(
                               "First Name",
@@ -87,7 +82,8 @@ class ProfileComponent extends React.Component {
                             )}
                  <input type="text" class="form-field animation a3" name="lname" 
                       autofocus
-                      value={this.state.register.lname}
+                      placeholder={this.state.register.lname}
+                      value={this.state.lname}
                       onChange={this.handleChange}/>
                                {this.validator.message(
                               "Last Name",
@@ -97,45 +93,20 @@ class ProfileComponent extends React.Component {
 
 <input type="text" class="form-field animation a3"  name="address"
                       autofocus
-                      value={this.state.register.address}
+                      placeholder={this.state.register.address}
+                      value={this.state.address}
                       onChange={this.handleChange}/>
                                {this.validator.message(
                               "Address",
                               this.state.address,
                               "required"
                             )}
-
-
-<input type="text" class="form-field animation a3" value={this.state.email}name="email"
-                      autofocus
-                      value={this.state.register.email}
-                      onChange={this.handleChange}/>
-                               {this.validator.message(
-                              "Email",
-                              this.state.email,
-                              "required|email"
-                            )}
-
-
-<input type="text" class="form-field animation a3" value={this.state.phone} name="phone"
-                              onChange={this.handleChange} placeholder="Number"/>
-                               {this.validator.message(
-                              "Phone Number",
-                              this.state.phone,
-                              "required|phone"
-                            )}                  <button
+                 <button
                     class="btn btn-lg btn-primary btn-block text-uppercase"
                     type="submit"
                     onClick={this.updateUser}
                   >
                     Update
-                  </button>
-                  <button
-                    class="btn btn-lg btn-primary btn-block text-uppercase"
-                    type="submit"
-                    onClick={this.handleLogout}
-                  >
-                    Logout
                   </button>
               </div>
             </div>

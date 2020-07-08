@@ -39,7 +39,6 @@ class LoginComponent extends Component {
             .then(response => {
               console.log(response);
               localStorage.setItem("token", response.data.token);
-              localStorage.setItem("name",response.data.name);
               localStorage.setItem("email",response.data.email)
               console.log(response.data.token);
               console.log(response.data.name)
@@ -102,6 +101,7 @@ class LoginComponent extends Component {
                     )}
       <p class="animation a5"><Link to='/adminlogin'> Admin?</Link></p>
       <p className="text-center"><Link to='/register'> Register Here!</Link></p>
+      <p className="text-center" style={{color:"Red"}}><Link to='/forgotpassword'> Forgot Password!</Link></p>
       <button onClick={this.handleClick} class="animation a6">LOGIN</button>
     </div>
   </div>
