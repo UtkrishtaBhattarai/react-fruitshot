@@ -1,7 +1,15 @@
 import React from "react";
 import axios from "axios";
 import "./dashboard.css";
-import { Button, Card, Col, Carousel } from "react-bootstrap";
+import {
+	Button,
+	Card,
+	Col,
+	Carousel,
+	Form,
+	FormControl,
+	InputGroup,
+} from "react-bootstrap";
 import { Route, NavLink, Switch } from "react-router-dom";
 import DetailComponent from "../detailcomponent/DetailComponent";
 import HeaderComponent from "../usernavigation/HeaderComponent";
@@ -51,40 +59,40 @@ class DashboardComponent extends React.Component {
 			});
 		});
 	}
-	handleInputChange = event => {
+	handleInputChange = (event) => {
 		const query = event.target.value;
-	
-		this.setState(prevState => {
-		  const filteredData = prevState.data.filter(element => {
-			return element.name.toLowerCase().includes(query.toLowerCase());
-		  });
-	
-		  return {
-			query,
-			filteredData
-		  };
+
+		this.setState((prevState) => {
+			const filteredData = prevState.data.filter((element) => {
+				return element.name.toLowerCase().includes(query.toLowerCase());
+			});
+
+			return {
+				query,
+				filteredData,
+			};
 		});
-	  };
-	
-	  getData = () => {
+	};
+
+	getData = () => {
 		fetch(`http://localhost:4000/product/getproduct`)
-		  .then(response => response.json())
-		  .then(data => {
-			const { query } = this.state;
-			const filteredData = data.filter(element => {
-			  return element.name.toLowerCase().includes(query.toLowerCase());
+			.then((response) => response.json())
+			.then((data) => {
+				const { query } = this.state;
+				const filteredData = data.filter((element) => {
+					return element.name.toLowerCase().includes(query.toLowerCase());
+				});
+
+				this.setState({
+					data,
+					filteredData,
+				});
 			});
-	
-			this.setState({
-			  data,
-			  filteredData
-			});
-		  });
-	  };
-	
-	  componentWillMount() {
+	};
+
+	componentWillMount() {
 		this.getData();
-	  }
+	}
 	render() {
 		const mydata = this.state.filteredData.map((products) => {
 			return (
@@ -96,7 +104,8 @@ class DashboardComponent extends React.Component {
 						<NavLink to={`/detailproduct/${products._id}`}>
 							<Card.Img
 								className="cardImage"
-								variant="top" style={{height:"300px", width:"300px"}}
+								variant="top"
+								style={{ height: "300px", width: "300px" }}
 								src={`http://localhost:4000/uploads/${products.image}`}
 							/>
 						</NavLink>
@@ -122,7 +131,8 @@ class DashboardComponent extends React.Component {
 			return (
 				<Carousel.Item>
 					<img
-						className="d-block w-100" style={{width:"1140px", height:"400px"}}
+						className="d-block w-100"
+						style={{ width: "1140px", height: "400px" }}
 						src={`http://localhost:4000/uploads/${slider.image}`}
 						alt="First slide"
 					/>
@@ -139,11 +149,19 @@ class DashboardComponent extends React.Component {
 							<Carousel indicators={false} style={{ marginTop: "-0.4rem" }}>
 								{slider}
 							</Carousel>
-							<input
-            placeholder="Search for..."
-            value={this.state.query}
-            onChange={this.handleInputChange}
-          />
+							<InputGroup className="mb-3" style={{marginTop:"15px"}}>
+								<FormControl
+									style={{
+										backgroundColor: "rgb(97, 63, 153)",
+										color: "white",
+									}}
+									placeholder="Search"
+									aria-label="Search"
+									aria-describedby="basic-addon1"
+									value={this.state.query}
+									onChange={this.handleInputChange}
+								/>
+							</InputGroup>
 						</div>
 						{mydata}
 					</div>
