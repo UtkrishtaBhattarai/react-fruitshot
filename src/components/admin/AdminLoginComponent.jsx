@@ -77,13 +77,12 @@ class AdminLoginComponent extends Component {
                       this.state.password,
                       "required"
                     )}
-      <p class="animation a5"><Link to='/'> User?!</Link></p>
+      <p class="animation a5"><Link to='/login'> User?!</Link></p>
       <button onClick={this.handleClick} class="animation a6">LOGIN</button>
     </div>
   </div>
   <div class="right-section"></div>
 </div>
-  
 </body>
 </html>
         )

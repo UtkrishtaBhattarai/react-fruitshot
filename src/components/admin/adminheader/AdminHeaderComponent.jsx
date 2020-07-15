@@ -56,9 +56,9 @@ class AdminHeaderComponent extends React.Component {
 							</li>
 
 							<li className="nav-item" style={{marginLeft:"1000px"}}>
-								<a className="nav-link" onClick={this.handlelogout}>
+								<button onClick={this.handleLogout}>
 									Logout
-								</a>
+									</button>
 							</li>
 
 						</ul>

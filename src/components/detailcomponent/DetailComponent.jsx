@@ -2,17 +2,36 @@ import React from "react";
 import axios from "axios";
 import { Route, NavLink, Switch, Redirect } from "react-router-dom";
 import { Button, Card, Col } from "react-bootstrap";
-import HeaderComponent from '../usernavigation/HeaderComponent';
 import NavBarComponent from "../usernavigation/NavbarComponent";
 import Swal from 'sweetalert2';
 import './detailcomponent.scss'
+import {
+	CardGroup,
+	CardDeck,
+} from "react-bootstrap";
+import SimpleReactValidator from "simple-react-validator";
 
 class DetailComponent extends React.Component {
-  state = {
-    product: [],
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      product: [],
     productid: "",
-    userid: localStorage.getItem("userid")
+    comment:[],
+    actcomment:"",
+    email:localStorage.getItem("email"),
+    userid: localStorage.getItem("userid"),
+      isRegistered: false
+    };
+    this.validator = new SimpleReactValidator();
+  }
+  handleChange = e => {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
   };
+  
 
   componentDidMount() {
     axios
@@ -22,7 +41,16 @@ class DetailComponent extends React.Component {
         this.setState({
           product: response.data
         });
+        axios
+        .get("http://localhost:4000/comment/" + this.props.match.params.id)
+         .then(comment => {
+          this.setState({
+            comment: comment.data
+          });
+        
       });
+
+    });
   }
 
   addtocart = productid => {
@@ -53,12 +81,40 @@ class DetailComponent extends React.Component {
         }
       });
   };
+
+  
+  addcomment = productid => {
+    console.log(this.state);
+    axios
+      .post("http://localhost:4000/comment/addcomment/", this.state)
+      .then(value => {
+       this.setState({
+         actcomment:""
+       });
+       Swal.fire({
+        title: 'Success!',
+        text: 'You Have Commented',
+        icon: 'success',
+        confirmButtonText: 'Cool'
+      })
+      });
+  };
   render() {
-    if (localStorage.getItem("userid") == null) {
-      return <Redirect to="/login" />;
-    }
-    return (
+		const mydata = this.state.comment.map((comment) => {
+			return (
+				<CardGroup>
+				<p>{comment.actcomment}</p>
+      <p> {comment.email}</p>
+				</CardGroup>
+			);
+		});
+		return (
+      <html>
+      <head>
+</head>
       <div className="container-fluid">
+      <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v7.0" nonce="DaPSY1D1"></script>
           <NavBarComponent/>
         <div className="row">
           <div className="col-sm-8">
@@ -69,7 +125,15 @@ class DetailComponent extends React.Component {
               />
               </div>
               <div className="col-sm-4">
-            
+                <div className="row">
+              <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="large">
+ <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A3000%2Fdetailproduct%2F5efb48e2d3e12f1fc065d2a8&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><img style={{width:"40px",height:"40px" }} src={"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Facebook_icon.svg/1024px-Facebook_icon.svg.png"}/> </a>
+ </div>
+
+ <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-layout="button" data-size="large">
+ <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://softwarica.edu.np/&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><img style={{width:"40px",height:"40px" }} src={"https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Facebook_icon.svg/1024px-Facebook_icon.svg.png"}/> </a>
+ </div>
+ </div>
               <div class="card1">
   <h1>{this.state.product.name}</h1>
   <p class="price1"> Rs {this.state.product.price}/-</p>
@@ -83,8 +147,29 @@ class DetailComponent extends React.Component {
 
         </div>
         </div>
+        <div className="row">
+          <div className="col-sm-12">
+
+           <input type="text"
+           style={{width:"1000px", height:"100px"}}
+           multiple
+            name="actcomment" onChange={this.handleChange}
+            value={this.state.actcomment}/>
+              {this.validator.message(
+                              "Comment",
+                              this.state.actcomment,
+                              "required"
+                            )}
+           <button onClick={()=>this.addcomment(this.state.product._id)}>JHS</button>
+          </div>
+
+              <p>
+                {mydata}
+              </p>
+        </div>
       </div>
-    );
+      </html>
+		);
   }
 }
 
