@@ -1,5 +1,5 @@
 import React from 'react'
-import './nomatch.scss'
+import './nomatch.css'
 import { NavLink } from 'react-router-dom'
 import NavBarComponent from './usernavigation/NavbarComponent'
 

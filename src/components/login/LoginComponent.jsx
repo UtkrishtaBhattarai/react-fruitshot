@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import './login.scss'
+import './login.css'
 import SimpleReactValidator from "simple-react-validator";
 import AdBlockDetect from 'react-ad-block-detect';
 import Swal from 'sweetalert2';
