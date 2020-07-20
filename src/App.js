@@ -24,6 +24,8 @@ import OrderStatusComponent from "./components/orderstatus/OrderStatusComponent"
 import MyOrderComponent from "./components/myorders/MyOrderComponent";
 import DeleteProfileComponent from "./components/deleteprofile/DeleteProfileComponent";
 import ForgotPasswordComponent from "./components/forgotpassword/ForgotPassword";
+import NotificationComponent from "./components/notification/NotificationComponent"
+import Addnotification from "./components/admin/addnotification/AddNotification"
 function App() {
 	return (
 		<BrowserRouter>
@@ -49,6 +51,8 @@ function App() {
 				<Route path="/checkorder" component={OrderStatusComponent} />
 				<Route path="/myorders" component={MyOrderComponent} />
 				<Route path="/forgotpassword" component={ForgotPasswordComponent} />
+				<Route path="/users/viewnotification" component={NotificationComponent}/>
+				<Route path="/admin/addnotification" component={Addnotification}/>
 				<Route>
 					<NoMatch />
 				</Route>

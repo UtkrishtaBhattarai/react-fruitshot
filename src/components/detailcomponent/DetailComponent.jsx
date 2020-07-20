@@ -91,6 +91,7 @@ class DetailComponent extends React.Component {
 					icon: "success",
 					confirmButtonText: "Cool",
 				});
+				window.location.reload()
 			});
 	};
 	render() {

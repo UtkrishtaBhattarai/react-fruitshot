@@ -91,6 +91,11 @@ class NavBarComponent extends Component {
 			<DropdownItem tag="a" href="/deleteprofile"> <img src="https://th.bing.com/th/id/OIP.g8beJe2R0TpPCftfEcqIUwHaF8?pid=Api&rs=1" style={{width:"30px", height:"30px"}}></img>Delete Profile</DropdownItem>
           </DropdownMenu>
         </UncontrolledDropdown>
+
+		<Nav.Link style={{ color: "#fff" }} href="/users/viewnotification">
+							<img src="https://blog.taskpigeon.co/wp-content/uploads/2017/06/Advanced-Email-Notifications-Task-Pigeon.jpg" style={{width:"20px", height:"20px"}}></img>
+							Noification
+							</Nav.Link>
 							<Nav.Link style={{ color: "#fff" }} href="/login">
 							<img src="https://th.bing.com/th/id/OIP.4GUgfdIa-ZTmhyayR7g35wHaHa?pid=Api&rs=1" style={{width:"20px", height:"20px"}}></img>
 							Login
@@ -100,6 +105,8 @@ class NavBarComponent extends Component {
 							<img src="https://th.bing.com/th/id/OIP.sYKmO23D9gxcd-2ThzxTZAHaIe?pid=Api&rs=1" style={{width:"20px", height:"20px"}}></img>
 							Register
 							</Nav.Link>
+
+
 							
 						
 
