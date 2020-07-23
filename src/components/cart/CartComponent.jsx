@@ -52,6 +52,7 @@ class CartComponent extends React.Component {
   <p><button className="btn btn-success" style={{background:"green", marginTop:"5px"}}>Checkout</button></p>
                                 </NavLink>
 </div>
+
             )
         })
         return (
