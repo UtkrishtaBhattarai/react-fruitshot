@@ -32,7 +32,7 @@ class AdminHeaderComponent extends React.Component {
 					<div className="collapse navbar-collapse" id="navbarSupportedContent">
 						<ul className="navbar-nav mr-auto">
 							<li className="nav-item">
-								<a className="nav-link" href="/addnotification">
+								<a className="nav-link" href="/admin/addnotification">
 									Notification
 								</a>
 							</li>
@@ -54,12 +54,18 @@ class AdminHeaderComponent extends React.Component {
 									Orders
 								</a>
 							</li>
+							<li className="nav-item">
+								<a className="nav-link" href="/admin/viewcomplaint">
+									viewcomplaint
+								</a>
+							</li>
 
-							<li className="nav-item" style={{marginLeft:"1000px"}}>
+							<li className="nav-item" style={{marginLeft:"880px"}}>
 								<button onClick={this.handleLogout}>
 									Logout
 									</button>
 							</li>
+							
 
 						</ul>
 					</div>

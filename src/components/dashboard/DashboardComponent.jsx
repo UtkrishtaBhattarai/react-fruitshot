@@ -22,6 +22,7 @@ import "../css/Dashboard.css";
 import NavbarComponent from "../usernavigation/NavbarComponent";
 import NavBarComponent from "../usernavigation/NavbarComponent";
 import SearchComponent from "../search/SearchComponent";
+import ComplaintComponent from "../complaint/ComplaintComponent";
 class DashboardComponent extends React.Component {
 	state = {
 		products: [],
@@ -169,6 +170,8 @@ class DashboardComponent extends React.Component {
 						{mydata}
 					</div>
 				</div>
+				<ComplaintComponent/>
+
 			</React.Fragment>
 		);
 	}
