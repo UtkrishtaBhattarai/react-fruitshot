@@ -16,6 +16,7 @@ class DetailComponent extends React.Component {
 		this.state = {
 			product: [],
 			productid: "",
+			is_liked:1,
 			comment: [],
 			actcomment: "",
 			email: localStorage.getItem("email"),
@@ -29,6 +30,19 @@ class DetailComponent extends React.Component {
 			[e.target.name]: e.target.value,
 		});
 	};
+
+	like = productid => {
+		var x = confirm("Are you sure you want to like?"); //eslint-disable-line
+		if (x) {
+		  axios.post(
+			"http://localhost:4000/likedislike/like",
+			this.state
+		  );
+		  location.reload(); //eslint-disable-line
+		} else {
+		  return false;
+		}
+	  };
 
 	componentDidMount() {
 		axios
@@ -194,6 +208,7 @@ class DetailComponent extends React.Component {
 						</div>
 					</div>
 					<div className="row">
+						<button onClick={this.like}>LOL</button>
 						<div className="col-sm-12" style={{ backgroundColor: "#f2f2f2" }}>
 							<Form.Group controlId="exampleForm.ControlTextarea1">
 								<Form.Label style={{ fontWeight: "bold", marginLeft: "10px" }}>
