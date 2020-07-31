@@ -16,8 +16,9 @@ class DetailComponent extends React.Component {
 		this.state = {
 			product: [],
 			productid: "",
-			is_liked:1,
 			comment: [],
+			likecount:"",
+			dislikecount:"",
 			actcomment: "",
 			email: localStorage.getItem("email"),
 			userid: localStorage.getItem("userid"),
@@ -31,18 +32,71 @@ class DetailComponent extends React.Component {
 		});
 	};
 
-	like = productid => {
-		var x = confirm("Are you sure you want to like?"); //eslint-disable-line
-		if (x) {
-		  axios.post(
-			"http://localhost:4000/likedislike/like",
-			this.state
-		  );
-		  location.reload(); //eslint-disable-line
-		} else {
-		  return false;
-		}
-	  };
+	like = (productid) => {
+		this.setState({
+			productid: this.props.match.params.id,
+		});
+		console.log(this.state);
+		axios
+			.post("http://localhost:4000/likedislike/checklike/"+this.props.match.params.id, this.state)
+			.then((value) => {
+				const khai = value.data.status;
+				if (khai == "cantadd") {
+					Swal.fire({
+						title: "Cannot select the option twice",
+						text: "You Have Liked/Disliked the Product",
+						icon: "error",
+						confirmButtonText: "Cool",
+					});
+					window.location.reload()
+					return;
+				} else if (khai == "addhere") {
+					Swal.fire({
+						title: "You Have Liked the Product!",
+						text: "Successfully Liked",
+						icon: "success",
+						confirmButtonText: "Cool",
+					});
+					axios.post("http://localhost:4000/likedislike/likeme", this.state);
+					window.location.reload()
+					
+					
+				}
+				
+			});
+	};
+
+
+	dislike = (productid) => {
+		this.setState({
+			productid: this.props.match.params.id,
+		});
+		console.log(this.state);
+		axios
+			.post("http://localhost:4000/likedislike/checkdislike/"+this.props.match.params.id, this.state)
+			.then((value) => {
+				const khai = value.data.status;
+				if (khai == "cantadd") {
+					Swal.fire({
+						title: "Cannot select the option twice",
+						text: "You Have Liked/Disliked the Product",
+						icon: "error",
+						confirmButtonText: "Cool",
+					});
+					window.location.reload()
+					return;
+				} else if (khai == "addhere") {
+					Swal.fire({
+						title: "You Have Disliked the Product!",
+						text: "Successfully Disliked",
+						icon: "success",
+						confirmButtonText: "Cool",
+					});
+					axios.post("http://localhost:4000/likedislike/dislikeme", this.state);
+					window.location.reload()
+				}
+			});
+	};
 
 	componentDidMount() {
 		axios
@@ -52,6 +106,23 @@ class DetailComponent extends React.Component {
 				this.setState({
 					product: response.data,
 				});
+
+				axios
+			.get("http://localhost:4000/likedislike/likecount/" + this.props.match.params.id)
+			.then((response) => {
+				console.log(response.data+"ma ho like count");
+				this.setState({
+					likecount: response.data,
+				});
+			});
+			axios
+			.get("http://localhost:4000/likedislike/dislikecount/" + this.props.match.params.id)
+			.then((response) => {
+				console.log(response.data+"ma ho like count");
+				this.setState({
+					dislikecount: response.data,
+				});
+			});
 				axios
 					.get("http://localhost:4000/comment/" + this.props.match.params.id)
 					.then((comment) => {
@@ -60,6 +131,8 @@ class DetailComponent extends React.Component {
 						});
 					});
 			});
+
+			
 	}
 
 	addtocart = (productid) => {
@@ -125,6 +198,7 @@ class DetailComponent extends React.Component {
 		});
 		return (
 			<React.Fragment>
+				<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
 				<div className="container-fluid">
 					<script
 						async
@@ -189,8 +263,16 @@ class DetailComponent extends React.Component {
 								<p class="price1"> Rs {this.state.product.price}/-</p>
 								<p> Description: {this.state.product.description}</p>
 								<p>
+								{this.state.likecount}
+								<i onClick={() => this.like(this.state.product._id)}><img style={{width:"40px",hover:true, height:"40px"}} src="https://th.bing.com/th/id/OIP.VFVOB1B5QgrIvOLMztVpbwHaG4?pid=Api&rs=1"></img></i>
+								<a style={{marginLeft:"20px"}}>{this.state.dislikecount}</a>
+								<i onClick={() => this.dislike(this.state.product._id)}><img style={{width:"40px",hover:true, height:"40px"}} src="https://images.techhive.com/images/article/2015/11/dislike_facebook-100627022-large.jpg"></img></i>
+									
+										
+								</p>
+								<p>
 									<button
-										style={{ marginTop: "160px" }}
+										style={{ marginTop: "110px" }}
 										onClick={() => this.addtocart(this.state.product._id)}
 									>
 										Add to Cart
@@ -208,7 +290,6 @@ class DetailComponent extends React.Component {
 						</div>
 					</div>
 					<div className="row">
-						<button onClick={this.like}>LOL</button>
 						<div className="col-sm-12" style={{ backgroundColor: "#f2f2f2" }}>
 							<Form.Group controlId="exampleForm.ControlTextarea1">
 								<Form.Label style={{ fontWeight: "bold", marginLeft: "10px" }}>
