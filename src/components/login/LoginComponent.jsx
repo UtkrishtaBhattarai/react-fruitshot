@@ -102,7 +102,7 @@ class LoginComponent extends Component {
       <p class="animation a5"><Link to='/adminlogin'> Admin?</Link></p>
       <p className="text-center"><Link to='/register'> Register Here!</Link></p>
       <p className="text-center" style={{color:"Red"}}><Link to='/forgotpassword'> Forgot Password!</Link></p>
-      <button onClick={this.handleClick} class="animation a6">LOGIN</button>
+      <button name="login" onClick={this.handleClick} class="animation a6">LOGIN</button>
     </div>
   </div>
   <div class="right-section"></div>

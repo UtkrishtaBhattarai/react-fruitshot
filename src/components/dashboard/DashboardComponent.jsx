@@ -148,6 +148,7 @@ class DashboardComponent extends React.Component {
 			<React.Fragment>
 				<NavBarComponent></NavBarComponent>
 				<div className="container-fluid">
+					<p name="fruitshot">Fruitshot</p>
 					<div className="row">
 						<div className="col-md-12">
 							<Carousel indicators={false} style={{ marginTop: "-0.4rem" }}>
@@ -161,6 +162,8 @@ class DashboardComponent extends React.Component {
 									}}
 									placeholder="Search"
 									aria-label="Search"
+									name="q"
+									id="q"
 									aria-describedby="basic-addon1"
 									value={this.state.query}
 									onChange={this.handleInputChange}
