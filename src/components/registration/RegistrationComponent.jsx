@@ -31,34 +31,48 @@ class RegisterComponent extends React.Component {
 
 	register = (e) => {
 		e.preventDefault();
-		if (this.validator.allValid()) {
-			axios
-				.post("http://localhost:4000/register/register", this.state)
-				.then((response) => {
-					console.log(response.data);
-					localStorage.setItem("token", response.data.token);
-					console.log(response.data.token);
-					this.setState({
-						fname: "",
-						lname: "",
-						address: "",
-						email: "",
-						phone: "",
-						password: "",
-						isRegistered: true,
-					});
+		axios
+			.post("http://localhost:4000/register/checkuser/", this.state)
+			.then((value) => {
+				const khai = value.data.status;
+				if (khai == "nouser") {
+					if (this.validator.allValid()) {
+						axios
+							.post("http://localhost:4000/register/register", this.state)
+							.then((response) => {
+								this.setState({
+									fname: "",
+									lname: "",
+									address: "",
+									email: "",
+									phone: "",
+									password: "",
+									isRegistered: true,
+								});
+								Swal.fire({
+									title: "Success!",
+									text: "You Have Been Registered",
+									icon: "success",
+									confirmButtonText: "Cool",
+								});
+							})
+							.catch((err) => console.log(err));
+					} else {
+						this.validator.showMessages();
+						this.forceUpdate();
+					}
+					return;
+				} else if (khai == "alreadyuser") {
 					Swal.fire({
-						title: "Success!",
-						text: "You Have Been Registered",
-						icon: "success",
+						title: "Cant Register!",
+						text: "Email ID already exists",
+						icon: "error",
 						confirmButtonText: "Cool",
 					});
-				})
-				.catch((err) => console.log(err));
-		} else {
-			this.validator.showMessages();
-			this.forceUpdate();
-		}
+
+				}
+			});
+		
 	};
 	render() {
 		if (this.state.isRegistered === true) {

@@ -9,7 +9,8 @@ class OrderStatusComponent extends React.Component {
     super(props);
 
     this.state = {
-      id: ""
+      id: "",
+      text:""
     };
     this.validator = new SimpleReactValidator();
   }
@@ -21,7 +22,15 @@ class OrderStatusComponent extends React.Component {
 
   handleClick = e => {
     if (this.state.id == "") {
-      alert("Enter Product id");
+      this.setState({
+        text:"Enter ID"
+      })
+      Swal.fire({
+        title: 'Error!',
+        text: 'Enter Product ID',
+        icon: 'error',
+        confirmButtonText: 'Cool'
+      })
       return;
     }
     e.preventDefault();
@@ -31,6 +40,9 @@ class OrderStatusComponent extends React.Component {
         console.log(response);
         const ans = response.data.status;
         if (ans == "Successfully Dispatched") {
+          this.setState({
+            text:"Already Dispatched"
+          })
             Swal.fire({
                 title: 'Already Dispatched!',
                 text: 'You Product is ready for dispatch',
@@ -39,6 +51,9 @@ class OrderStatusComponent extends React.Component {
               })
           return;
         } else if (ans == "no") {
+          this.setState({
+            text:"Not Dispatched!"
+          })
             Swal.fire({
                 title: 'Not Dispatched!',
                 text: 'You Product is still pending',
@@ -47,7 +62,10 @@ class OrderStatusComponent extends React.Component {
               })
           return;
         } else {
-            Swal.fire({
+          this.setState({
+            text:"Check Order ID!"
+          })
+          Swal.fire({
                 title: 'Check Order ID!',
                 text: 'The order ID is incorrect',
                 icon: 'error',
@@ -86,6 +104,8 @@ class OrderStatusComponent extends React.Component {
                   <input type="submit" className="btn btn-success" value="Submit" onClick={this.handleClick} style={{width:"100%"}} />
                   </form>
                   </div>
+
+                     <p>{this.state.text}</p>
                   
                   </div>
                   

@@ -182,6 +182,9 @@ class DetailComponent extends React.Component {
 			});
 	};
 	render() {
+		if (localStorage.getItem("userid") == null) {
+			return <Redirect to="/login" />;
+    }
 		const mydata = this.state.comment.map((comment) => {
 			return (
 				<React.Fragment>

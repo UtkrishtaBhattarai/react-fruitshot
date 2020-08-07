@@ -4,9 +4,6 @@ import './login.css'
 import SimpleReactValidator from "simple-react-validator";
 import AdBlockDetect from 'react-ad-block-detect';
 import Swal from 'sweetalert2';
-import {
-    Container, Col, Form, FormGroup, Label, Input, Button, FormText
-} from 'reactstrap'
 import axios from 'axios'
 import NavBarComponent from '../usernavigation/NavbarComponent';
 
@@ -31,13 +28,31 @@ class LoginComponent extends Component {
       };
     
       handleClick = e => {
+
+        e.preventDefault()
         if (this.validator.allValid()) 
         {
-          e.preventDefault();
+          axios
+			.post("http://localhost:4000/register/checklogin/", this.state)
+			.then((value) => {
+				const khai = value.data.status;
+				if (khai == "xainauser") {
+          Swal.fire({
+            title: "Cannot Login In",
+            text: "No user found with such credentials",
+            icon: "error",
+            confirmButtonText: "Cool",
+          });
+          this.setState({
+            email: "",
+            password: ""
+          });
+          return;  
+				}
+      });
           axios
             .post("http://localhost:4000/register/login_user", this.state)
             .then(response => {
-              console.log(response);
               localStorage.setItem("token", response.data.token);
               localStorage.setItem("email",response.data.email)
               console.log(response.data.token);
