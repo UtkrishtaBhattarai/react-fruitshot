@@ -101,8 +101,9 @@ class OrderStatusComponent extends React.Component {
                   )}
                   </li>
                   </ul>
-                  <input type="submit" className="btn btn-success" value="Submit" onClick={this.handleClick} style={{width:"100%"}} />
-                  </form>
+                  <button className="btn btn-success" value="Submit" onClick={this.handleClick} style={{width:"100%"}} >
+
+Submit</button>                  </form>
                   </div>
 
                      <p>{this.state.text}</p>
