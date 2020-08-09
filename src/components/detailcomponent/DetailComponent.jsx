@@ -8,6 +8,7 @@ import "./detailcomponent.css";
 import { CardGroup, CardDeck } from "react-bootstrap";
 import SimpleReactValidator from "simple-react-validator";
 import { FaUser,FaCommentDots } from "react-icons/fa";
+import DarkModeToggle from '../darkmode/DarkModeToggle';
 
 class DetailComponent extends React.Component {
 	constructor(props) {
@@ -293,6 +294,7 @@ class DetailComponent extends React.Component {
 						</div>
 					</div>
 					<div className="row">
+					<DarkModeToggle/>
 						<div className="col-sm-12" style={{ backgroundColor: "#f2f2f2" }}>
 							<Form.Group controlId="exampleForm.ControlTextarea1">
 								<Form.Label style={{ fontWeight: "bold", marginLeft: "10px" }}>

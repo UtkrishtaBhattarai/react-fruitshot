@@ -4,6 +4,7 @@ import { Link, Redirect } from 'react-router-dom'
 import axios from 'axios'
 import './cart.scss'
 import NavBarComponent from '../usernavigation/NavbarComponent';
+import DarkModeToggle from '../darkmode/DarkModeToggle';
 
 class CartComponent extends React.Component {
     state = {

@@ -6,6 +6,8 @@ import AdBlockDetect from 'react-ad-block-detect';
 import Swal from 'sweetalert2';
 import axios from 'axios'
 import NavBarComponent from '../usernavigation/NavbarComponent';
+import DarkModeToggle from '../darkmode/DarkModeToggle';
+import '../darkmode/style.scss';
 
 class LoginComponent extends Component {
     constructor(props) {
@@ -37,18 +39,18 @@ class LoginComponent extends Component {
 			.then((value) => {
 				const khai = value.data.status;
 				if (khai == "xainauser") {
-          Swal.fire({
+          this.setState({
+            email: "",
+            password: ""
+          });Swal.fire({
             title: "Cannot Login In",
             text: "No user found with such credentials",
             icon: "error",
             confirmButtonText: "Cool",
-          });
-          this.setState({
-            email: "",
-            password: ""
-          });
+          });   
+
           return;  
-				}
+        }
       });
           axios
             .post("http://localhost:4000/register/login_user", this.state)

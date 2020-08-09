@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link, Redirect, NavLink } from "react-router-dom";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
+import DarkModeToggle from "../darkmode/DarkModeToggle"
 
 import {
 	Navbar,
@@ -126,7 +127,7 @@ class NavBarComponent extends Component {
 							</Nav.Link>
 
 
-							
+							<DarkModeToggle/>
 						
 
                         </Nav>

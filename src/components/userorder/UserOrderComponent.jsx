@@ -5,6 +5,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import SimpleReactValidator from "simple-react-validator";
 import NavBarComponent from "../usernavigation/NavbarComponent";
+import DarkModeToggle from "../darkmode/DarkModeToggle";
 
 
 class OrderComponent extends Component {
@@ -100,6 +101,7 @@ class OrderComponent extends Component {
 			<React.Fragment>
 				<div className="container-fluid">
           <NavBarComponent/>
+		  <DarkModeToggle/>
 					<div className="row" style={{ marginTop: "0.5rem" }}>
 						<div className="col-md-8">
 							<div style={{ fontWeight: "bold" }}>

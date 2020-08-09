@@ -28,6 +28,8 @@ import NotificationComponent from "./components/notification/NotificationCompone
 import Addnotification from "./components/admin/addnotification/AddNotification"
 import "./components/complaint/complaint.js"
 import ViewComplaintComponent from "./components/admin/viewcomplaint/ViewComplaintComponent" 
+import DarkModeToggle from '../src/components/darkmode/DarkModeToggle'
+import "../src/components/darkmode/style.scss"
 function App() {
 	return (
 		<BrowserRouter>

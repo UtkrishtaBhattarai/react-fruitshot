@@ -3,6 +3,7 @@ import axios from "axios";
 import NavBarComponent from "../usernavigation/NavbarComponent";
 import SimpleReactValidator from "simple-react-validator";
 import Swal from 'sweetalert2';
+import DarkModeToggle from "../darkmode/DarkModeToggle";
 
 class OrderStatusComponent extends React.Component {
   constructor(props) {
@@ -81,6 +82,7 @@ class OrderStatusComponent extends React.Component {
     return (
         <div className="container-fluid">
             <NavBarComponent/>
+            <DarkModeToggle/>
         <div class=" col-sm-12">
         <form class="form-style-9">
 <ul>

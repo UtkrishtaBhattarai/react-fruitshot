@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import NavBarComponent from "../usernavigation/NavbarComponent";
+import DarkModeToggle from "../darkmode/DarkModeToggle";
 
 class NotificationComponent extends React.Component {
   state = {

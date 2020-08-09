@@ -26,7 +26,8 @@
     "reactstrap": "^8.5.1",
     "selenium-webdriver": "^4.0.0-alpha.7",
     "simple-react-validator": "^1.5.0",
-    "sweetalert2": "^9.15.2"
+    "sweetalert2": "^9.15.2",
+    "use-dark-mode": "^2.3.1"
   },
   "scripts": {
     "start": "react-scripts start",
