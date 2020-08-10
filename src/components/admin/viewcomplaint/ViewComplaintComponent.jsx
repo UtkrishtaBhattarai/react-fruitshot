@@ -29,27 +29,9 @@ class ViewComplaintComponent extends React.Component {
         </tr>
       );
     });
-    return (
-      <div className="container-fluid">
-        <AdminHeaderComponent />
-        <div className="row">
-          <div className="col-sm-12">
-            <h1 className="text-center">All Orders</h1>
-            <table class="table table-dark">
-              <thead>
-                <tr>
-                  <th scope="col">Email</th>
-                  <th scope="col">Complaint</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
+  
 
-              {mydata}
-            </table>
-          </div>
-        </div>
-      </div>
-    );
+    
   }
 }
 
